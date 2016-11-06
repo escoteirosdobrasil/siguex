@@ -1,0 +1,12 @@
+{
+  "name": "siguex",
+  "version": "0.0.1",
+  "description": "Make the communication with sigue much easier",
+  "main": "siguex.js",
+  "repository": {
+    "url": "https://github.com/escoteirosdobrasil/siguex",
+    "type": "git"
+  },
+  "author": "Alberto Silva <albertossilva@gmail.com>",
+  "license": "MIT"
+}
