@@ -8,5 +8,47 @@
     "type": "git"
   },
   "author": "Alberto Silva <albertossilva@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "NODE_ENV=test NODE_PATH=./ mocha \"src/**/*.test.js\" --colors --reporter spec --require test/support.js",
+    "test:watch": "npm test -- --reporter min --watch",
+    "coverage": "nyc npm test",
+    "lint": "standard \"src/**/*.js\""
+  },
+  "nyc": {
+    "statements": 95,
+    "branches": 90,
+    "functions": 95,
+    "lines": 90,
+    "check-coverage": true,
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "exclude": [
+      "node_modules/**/*",
+      "src/**/*.test.js"
+    ]
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "after",
+      "before",
+      "beforeEach"
+    ]
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "mocha": "^3.1.2",
+    "nyc": "^8.4.0",
+    "sinon": "^1.17.6",
+    "standard": "^8.5.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.2"
+  }
 }
