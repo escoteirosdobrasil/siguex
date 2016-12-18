@@ -17,6 +17,8 @@ const transformToJSON = (quotedValue, __, key) => {
   return `"${key}":`
 }
 
+const createLoginObject = ({ success, token }) => ({ success, token })
+
 const parseDataAsObject = ({ data, headers }) => {
   const parsedResponse = JSON.parse(data.replace(NON_NORMALIZEN_JSON_ENTRIES, transformToJSON))
   const setCookieHeader = headers[TOKEN_HEADER] && headers[TOKEN_HEADER][0]
@@ -39,5 +41,6 @@ module.exports = function login (username, password, injection) {
 
   return http.post(LOGIN_URL, queryString.stringify(data))
     .then(parseDataAsObject)
+    .then(createLoginObject)
     .catch(console.trace.bind(console, 'error ::'))
 }

@@ -33,7 +33,6 @@ describe('login', () => {
   it('calls login on sigue parsing as json', () => {
     return login(username, password, dependencies).then(result => {
       expect(result.success).to.equal(false)
-      expect(result.message).to.equal('test')
       expect(result.token).to.equal(token)
     })
   })
