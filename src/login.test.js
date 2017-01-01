@@ -5,18 +5,19 @@ const login = require('./login')
 
 describe('login', () => {
   const dependencies = {}
-  const mockResult = '{success:false, message: \'test\'}'
+  const successResponse = '{ success:true }'
+  const nonSuccessResponse = '{ success:false, message: \'test\' }'
   const username = 'any username'
   const password = 'any password'
   const token = '51D116905149BB1329748FA4EA68CBB9'
 
-  beforeEach('prepare mocks and call', () => {
+  const prepareMocks = (response) => {
     Object.assign(dependencies, {
       http: {
         post: sinon.stub()
           .withArgs('http://sigue.escoteiros.org.br/sigue/loginSigue.do', 'parseQueryString')
           .returns(Promise.resolve({
-            data: mockResult,
+            data: response,
             headers: {
               'set-cookie': [`JSESSIONID=${token}; Path=/sigue/; HttpOnly`]
             }
@@ -28,11 +29,20 @@ describe('login', () => {
           .returns('parseQueryString')
       }
     })
-  })
+  }
 
   it('calls login on sigue parsing as json', () => {
+    prepareMocks(nonSuccessResponse)
     return login(username, password, dependencies).then(result => {
       expect(result.success).to.equal(false)
+      expect(result.token).to.equal(undefined)
+    })
+  })
+
+  it('returns the token when login works', () => {
+    prepareMocks(successResponse)
+    return login(username, password, dependencies).then(result => {
+      expect(result.success).to.equal(true)
       expect(result.token).to.equal(token)
     })
   })
