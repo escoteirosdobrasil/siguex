@@ -1,6 +1,6 @@
 {
   "name": "siguex",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Make the communication with sigue much easier",
   "main": "siguex.js",
   "repository": {

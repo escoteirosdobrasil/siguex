@@ -42,5 +42,5 @@ module.exports = function login (username, password, token, injection) {
 
   return http.post(LOGIN_URL, queryString.stringify(data))
     .then(parseDataAsObject)
-    .catch(console.trace.bind(console, 'error ::'))
+    .catch(console.log.bind(console, 'error ::'))
 }
