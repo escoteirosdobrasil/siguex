@@ -2,7 +2,7 @@
   "name": "siguex",
   "version": "0.0.3",
   "description": "Make the communication with sigue much easier",
-  "main": "siguex.js",
+  "main": "src/Siguex.js",
   "repository": {
     "url": "https://github.com/escoteirosdobrasil/siguex",
     "type": "git"
@@ -16,10 +16,10 @@
     "lint": "standard \"src/**/*.js\""
   },
   "nyc": {
-    "statements": 95,
-    "branches": 90,
-    "functions": 95,
-    "lines": 90,
+    "statements": 100,
+    "branches": 100,
+    "functions": 100,
+    "lines": 100,
     "check-coverage": true,
     "reporter": [
       "lcov",

@@ -1,4 +1,4 @@
-const login = require('./src/login')
+const login = require('./login')
 
 class Siguex {
   constructor (token, { setToken, clearToken }) {
@@ -18,10 +18,14 @@ class Siguex {
   }
 }
 
-[login].forEach((method) => {
+Siguex.addMethod = function addMethod (method) {
   Siguex.prototype[method.name] = function () {
     return method.apply(this, Array.from(arguments).concat(this.token))
   }
-})
+}
+
+const importedMethods = [login]
+
+importedMethods.forEach(Siguex.addMethod)
 
 module.exports = Siguex
