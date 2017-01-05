@@ -25,7 +25,6 @@ Siguex.addMethod = function addMethod (method) {
 }
 
 const importedMethods = [login]
-
 importedMethods.forEach(Siguex.addMethod)
 
 module.exports = Siguex

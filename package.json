@@ -28,14 +28,17 @@
     ],
     "exclude": [
       "node_modules/**/*",
-      "src/**/*.test.js"
+      "src/**/*.test.js",
+      "test/support.js"
     ]
   },
   "standard": {
     "globals": [
       "describe",
+      "context",
       "it",
       "after",
+      "afterEach",
       "before",
       "beforeEach"
     ]
