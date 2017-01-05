@@ -29,7 +29,7 @@ const parseDataAsObject = ({ data, headers }) => {
   }
 }
 
-module.exports = function login (username, password, injection) {
+module.exports = function login (username, password, token, injection) {
   const {
     http,
     queryString

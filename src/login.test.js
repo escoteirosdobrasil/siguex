@@ -33,7 +33,7 @@ describe('login', () => {
 
   it('calls login on sigue parsing as json', () => {
     prepareMocks(nonSuccessResponse)
-    return login(username, password, dependencies).then(result => {
+    return login(username, password, null, dependencies).then(result => {
       expect(result.success).to.equal(false)
       expect(result.token).to.equal(undefined)
     })
@@ -41,7 +41,7 @@ describe('login', () => {
 
   it('returns the token when login works', () => {
     prepareMocks(successResponse)
-    return login(username, password, dependencies).then(result => {
+    return login(username, password, null, dependencies).then(result => {
       expect(result.success).to.equal(true)
       expect(result.token).to.equal(token)
     })
